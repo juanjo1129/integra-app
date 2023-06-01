@@ -1,18 +1,18 @@
 <script setup>
-import { ref } from 'vue';
-import { useForm } from '@inertiajs/vue3';
-import ActionSection from '@/Components/ActionSection.vue';
-import DangerButton from '@/Components/DangerButton.vue';
-import DialogModal from '@/Components/DialogModal.vue';
-import InputError from '@/Components/InputError.vue';
-import SecondaryButton from '@/Components/SecondaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import { ref } from "vue";
+import { useForm } from "@inertiajs/vue3";
+import ActionSection from "@/Components/ActionSection.vue";
+import DangerButton from "@/Components/DangerButton.vue";
+import DialogModal from "@/Components/DialogModal.vue";
+import InputError from "@/Components/InputError.vue";
+import SecondaryButton from "@/Components/SecondaryButton.vue";
+import TextInput from "@/Components/TextInput.vue";
 
 const confirmingUserDeletion = ref(false);
 const passwordInput = ref(null);
 
 const form = useForm({
-    password: '',
+    password: "",
 });
 
 const confirmUserDeletion = () => {
@@ -22,7 +22,7 @@ const confirmUserDeletion = () => {
 };
 
 const deleteUser = () => {
-    form.delete(route('current-user.destroy'), {
+    form.delete(route("current-user.destroy"), {
         preserveScroll: true,
         onSuccess: () => closeModal(),
         onError: () => passwordInput.value.focus(),
@@ -39,33 +39,40 @@ const closeModal = () => {
 
 <template>
     <ActionSection>
-        <template #title>
-            Delete Account
-        </template>
+        <template #title> Eliminar cuenta </template>
 
-        <template #description>
-            Permanently delete your account.
-        </template>
+        <template #description> Elimina permanentemente tu cuenta. </template>
 
         <template #content>
             <div class="max-w-xl text-sm text-gray-600">
-                Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.
+                Una vez tu cuenta es eliminada, todos sus recursos e información
+                serán eliminados permanentemente. Antes de eliminar tu cuenta,
+                por favor descarga cualquier información que quieras mantener.
             </div>
 
-            <div class="mt-5">
-                <DangerButton @click="confirmUserDeletion">
-                    Delete Account
-                </DangerButton>
+            <div class="mt-5 grid grid-cols-6">
+                <div class="col-span-6 sm:col-span-4">
+                    <div
+                        class="flex gap-4 items-center bg-yellow-100 rounded shadow px-4 py-2 text-gray-600 text-sm"
+                    >
+                        <i class="fa-solid fa-triangle-exclamation text-lg"></i>
+
+                        Para eliminar tu cuenta tienes que contactarte con
+                        servicio al cliente, y comentar las razones por las
+                        cuales quieres eliminar tu cuenta.
+                    </div>
+                </div>
             </div>
 
             <!-- Delete Account Confirmation Modal -->
             <DialogModal :show="confirmingUserDeletion" @close="closeModal">
-                <template #title>
-                    Delete Account
-                </template>
+                <template #title> Delete Account </template>
 
                 <template #content>
-                    Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.
+                    Are you sure you want to delete your account? Once your
+                    account is deleted, all of its resources and data will be
+                    permanently deleted. Please enter your password to confirm
+                    you would like to permanently delete your account.
 
                     <div class="mt-4">
                         <TextInput
@@ -78,7 +85,10 @@ const closeModal = () => {
                             @keyup.enter="deleteUser"
                         />
 
-                        <InputError :message="form.errors.password" class="mt-2" />
+                        <InputError
+                            :message="form.errors.password"
+                            class="mt-2"
+                        />
                     </div>
                 </template>
 

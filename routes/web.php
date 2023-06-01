@@ -16,6 +16,9 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
+    return redirect(to: "/login");
+
+    // Deshabilitar página principal sin login.
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
