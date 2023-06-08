@@ -2,7 +2,12 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 
 import PrimaryButton from "@/Components/PrimaryButton.vue";
-import ChangePlanModal from "@/Components/ChangePlanModal.vue";
+
+const props = defineProps({
+    plan: Object,
+});
+
+console.log(props.plan);
 </script>
 
 <template>
@@ -45,7 +50,6 @@ import ChangePlanModal from "@/Components/ChangePlanModal.vue";
                             Cambiar de plan
                         </div>
                     </PrimaryButton>
-                    <ChangePlanModal />
                 </div>
                 <div class="border-t border-gray-100">
                     <dl class="divide-y divide-gray-100">
@@ -60,7 +64,7 @@ import ChangePlanModal from "@/Components/ChangePlanModal.vue";
                             <dd
                                 class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"
                             >
-                                aoeu
+                                {{ props.plan.name }}
                             </dd>
                         </div>
                         <div
@@ -74,7 +78,7 @@ import ChangePlanModal from "@/Components/ChangePlanModal.vue";
                             <dd
                                 class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"
                             >
-                                Backend Developer
+                                {{ props.plan.download }}
                             </dd>
                         </div>
                         <div
@@ -88,7 +92,7 @@ import ChangePlanModal from "@/Components/ChangePlanModal.vue";
                             <dd
                                 class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"
                             >
-                                margotfoster@example.com
+                                {{ props.plan.upload }}
                             </dd>
                         </div>
                         <div
@@ -102,7 +106,12 @@ import ChangePlanModal from "@/Components/ChangePlanModal.vue";
                             <dd
                                 class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"
                             >
-                                $120,000
+                                {{
+                                    parseFloat(props.plan.price).toLocaleString(
+                                        "es-CO",
+                                        { style: "currency", currency: "COP" }
+                                    )
+                                }}
                             </dd>
                         </div>
                     </dl>

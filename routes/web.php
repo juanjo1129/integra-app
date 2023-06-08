@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PlanController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -38,4 +39,6 @@ Route::middleware([
     })->name('dashboard');
 
     Route::get('/plan', [PlanController::class, 'index'])->name("plan");
+
+    Route::get('/invoice', [InvoiceController::class, 'index'])->name("invoice");
 });

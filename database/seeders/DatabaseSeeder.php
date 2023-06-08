@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // Generar un usuario de pruebas, contraseña: password
+        // Generar un usuario de pruebas; usuario: 1, contraseña: password
         \App\Models\User::factory()->create([
             'user' => 1,
         ]);

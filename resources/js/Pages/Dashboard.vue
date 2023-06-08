@@ -38,15 +38,15 @@ import MenuButton from "@/Components/MenuButton.vue";
                 class="grid gap-3 mt-8 shadow bg-white py-8 px-4 text-center rounded"
             >
                 <span class="text-xl">Menú principal</span>
-                <MenuButton :href="route('plan')"
-                    >Gestiona tu plan</MenuButton
-                >
-                <MenuButton :href="route('dashboard')"
-                    >Gestiona tu factura</MenuButton
-                >
-                <MenuButton :href="route('dashboard')"
-                    >Gestiona tu red</MenuButton
-                >
+                <MenuButton :href="route('plan')">
+                    Gestiona tu plan
+                </MenuButton>
+                <MenuButton :href="route('invoice')">
+                    Gestiona tu factura
+                </MenuButton>
+                <MenuButton :href="route('dashboard')">
+                    Gestiona tu red
+                </MenuButton>
             </div>
             <div class="text-gray-400 pt-5">
                 Todos los Derechos Reservados © COMUNICAR SAS
