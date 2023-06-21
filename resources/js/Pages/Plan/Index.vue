@@ -1,7 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import AppLayout from "@/Layouts/AppLayout.vue";
 
 import PrimaryButton from "@/Components/PrimaryButton.vue";
+import ChangePlanButton from "@/Pages/Plan/Partials/ChangePlanButton.vue";
 
 const props = defineProps({
     plan: Object,
@@ -33,23 +34,15 @@ console.log(props.plan);
                     class="flex my-8 px-4 sm:px-0 gap-3 sm:gap-12 justify-center"
                 >
                     <PrimaryButton>
-                        <div>
+                        <a href="https://www.speedtest.net/es">
                             <i
                                 class="fa-solid fa-gauge-high text-3xl sm:text-5xl mb-1"
                             ></i>
                             <br />
                             Mide tu velocidad
-                        </div>
+                        </a>
                     </PrimaryButton>
-                    <PrimaryButton>
-                        <div>
-                            <i
-                                class="fa-solid fa-arrow-trend-up text-3xl sm:text-5xl mb-1"
-                            ></i>
-                            <br />
-                            Cambiar de plan
-                        </div>
-                    </PrimaryButton>
+                    <ChangePlanButton :currentPlan="props.plan" />
                 </div>
                 <div class="border-t border-gray-100">
                     <dl class="divide-y divide-gray-100">

@@ -39,6 +39,7 @@ Route::middleware([
     })->name('dashboard');
 
     Route::get('/plan', [PlanController::class, 'index'])->name("plan");
+    Route::get('/plan/plan-list', [PlanController::class, 'findPlans']);
 
     Route::get('/invoice', [InvoiceController::class, 'index'])->name("invoice");
 });
