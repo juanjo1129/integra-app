@@ -24,4 +24,15 @@ class PlanController extends Controller
     {
         return PlanActions::findPlans($request->query('planName'));
     }
+
+    public function changePlan(Request $request): Collection
+    {
+        $validated = $request->validate([
+            'currentPlanId' => "required|numeric",
+            'clientId' => "required|numeric",
+            'newPlanId' => 'required|numeric'
+        ]);
+
+        dd($validated);
+    }
 }

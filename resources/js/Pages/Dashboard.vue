@@ -12,7 +12,7 @@ import MenuButton from "@/Components/MenuButton.vue";
             </h2>
         </template>
 
-        <div class="text-center self-center justify-self-center">
+        <div class="text-center self-center justify-self-center py-8">
             <div class="grid gap-1 text-center text-gray-500">
                 <i class="fa-regular fa-cube text-7xl pb-3 sm:text-9xl"></i>
                 <div class="text-3xl">Servicios Comunicar</div>

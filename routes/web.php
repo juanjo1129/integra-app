@@ -40,6 +40,7 @@ Route::middleware([
 
     Route::get('/plan', [PlanController::class, 'index'])->name("plan");
     Route::get('/plan/plan-list', [PlanController::class, 'findPlans']);
+    Route::patch('/plan/change-plan', [PlanController::class, 'changePlan']);
 
     Route::get('/invoice', [InvoiceController::class, 'index'])->name("invoice");
 });

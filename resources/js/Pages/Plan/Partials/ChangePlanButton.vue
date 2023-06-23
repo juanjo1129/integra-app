@@ -10,20 +10,21 @@ import { ref } from "vue";
 
 import { asyncDebounce } from "@/Functions/debouncer";
 
-defineProps<{
+const props = defineProps<{
     currentPlan: any;
 }>();
 
-const showChangePlan = ref<boolean>(true);
+const showChangePlan = ref<boolean>(false);
 const loading = ref<boolean>(false);
 const plans = ref<any>([]);
+const selectedPlan = ref<any>(null);
 
 async function searchPlans(planName: string = ""): Promise<void> {
     loading.value = true;
 
     plans.value.length = 0;
 
-    const response = await asyncDebounce(async () => {
+    const response: any = await asyncDebounce(async () => {
         return await axios.get("/plan/plan-list", {
             params: {
                 planName,
@@ -35,6 +36,14 @@ async function searchPlans(planName: string = ""): Promise<void> {
         plans.value = response.data;
     }
     loading.value = false;
+}
+
+async function changePlan() {
+    const response = await axios.patch("plan/change-plan", {
+        currentPlanId: props.currentPlan.id,
+        clientId: props.currentPlan.client_id,
+        newPlanId: selectedPlan.value.id,
+    });
 }
 
 searchPlans();
@@ -73,6 +82,9 @@ searchPlans();
                             :isLoading="loading"
                             :data="plans"
                             @change="(value) => searchPlans(value)"
+                            @update:modelValue="
+                                (value) => (selectedPlan = value)
+                            "
                         />
                     </dd>
                 </div>
@@ -83,7 +95,13 @@ searchPlans();
                 Cancelar
             </SecondaryButton>
 
-            <PrimaryButton class="ml-3"> Cambiar de plan </PrimaryButton>
+            <PrimaryButton
+                class="ml-3"
+                @click="changePlan"
+                :disabled="!selectedPlan"
+            >
+                Cambiar de plan
+            </PrimaryButton>
         </template>
     </DialogModal>
 </template>

@@ -7,8 +7,6 @@ import ChangePlanButton from "@/Pages/Plan/Partials/ChangePlanButton.vue";
 const props = defineProps({
     plan: Object,
 });
-
-console.log(props.plan);
 </script>
 
 <template>
